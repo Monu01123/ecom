@@ -1,5 +1,6 @@
 .navbar {
   height: 80px;
+  background-color: transparent;
 
   .wrapper {
     padding: 10px 30px;
@@ -11,6 +12,11 @@
       display: flex;
       align-items: center;
       font-size: 18px;
+    }
+
+    .flag{
+      width: 20px;
+      height: 20px;
     }
 
     .left {

@@ -1,12 +1,13 @@
 import React from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
 import "./Products.scss";
 
 const Products = () => {
   const catId = parseInt(useParams().id);
+  const location = useLocation();
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sort, setSort] = useState(null);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
@@ -14,6 +15,12 @@ const Products = () => {
   const { data, loading, error } = useFetch(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`
   );
+
+  //this id for the call the setsort function when the fuction calls
+  useEffect(() => {
+    setSort("asc");
+    console.log("Path changed to", location.pathname);
+  }, [location.pathname]);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -65,6 +72,7 @@ const Products = () => {
               value="asc"
               name="price"
               onChange={(e) => setSort("asc")}
+              // checked
             />
             <label htmlFor="asc">Price (Lowest first)</label>
           </div>
@@ -75,6 +83,7 @@ const Products = () => {
               value="desc"
               name="price"
               onChange={(e) => setSort("desc")}
+              // checked
             />
             <label htmlFor="desc">Price (Highest first)</label>
           </div>
@@ -86,7 +95,12 @@ const Products = () => {
           src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
           alt=""
         />
-        <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats}/>
+        <List
+          catId={catId}
+          maxPrice={maxPrice}
+          sort={sort}
+          subCats={selectedSubCats}
+        />
       </div>
     </div>
   );
