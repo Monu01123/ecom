@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.scss";
+import MyImage from "./payment_option.jpg";
 
 const Footer = () => {
   return (
@@ -22,33 +23,30 @@ const Footer = () => {
           <span>Cookies</span>
         </div>
         <div className="item">
-          <h1>About</h1>
-          <span>
-            Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit
-            amet conse ctetur adipisicing elit, seddo eiusmod tempor incididunt
-            ut labore etdolore.
-          </span>
+          <h1>Recommended Topics</h1>
+          <span>Shipping & Delivery</span>
+          <span>Payments & Pricing</span>
+          <span>Returns, Refunds</span>
+          <span>Managing Your Account</span>
+          <span>More Help</span>
         </div>
         <div className="item">
-          <h1>Contact</h1>
-          <span>
-            Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit
-            amet conse ctetur adipisicing elit, seddo eiusmod tempor incididunt
-            ut labore etdolore.
-          </span>
+          <h1>Some things you can do here</h1>
+          <span>Yours Orders</span>
+          <span>Payment setting</span>
+          <span>your address</span>
+          <span>talk to us</span>
         </div>
       </div>
       <div className="bottom">
         <div className="left">
-          <span className="logo">Lamastore</span>
+          <span className="logo">Louis Vuitton</span>
           <span className="copyright">
             © Copyright 2023. All Rights Reserved
           </span>
         </div>
         <div className="right">
-          <img src="/img/payment.png" alt="" />
+          <img src={MyImage} alt="payment options" />
         </div>
       </div>
     </div>

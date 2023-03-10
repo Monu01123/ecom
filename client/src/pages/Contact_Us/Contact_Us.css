@@ -1,0 +1,135 @@
+.contact-form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.open-form-button {
+  width: 80%;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 80px;
+  margin-left: 40px;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid rgb(177, 170, 170);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.open-form-button:hover {
+  background-color: #d0d2d5;
+}
+
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-popup {
+  background-color: #fff;
+  /* border: 2px solid #ccc; */
+  /* border-radius: 8px; */
+  width: 40%;
+  height: 45%;
+  /* padding: 2rem; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.form-popup h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-left: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-first-div {
+  background-color: #e0e0e0;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-second-div {
+  background-color: white;
+  box-sizing: border-box;
+  width: 450px;
+  height: 250px;
+}
+
+.contact-second-div > h3 {
+  padding: 22px;
+  padding-left: 40px;
+}
+.contact-second-div p {
+  padding-left: 40px;
+  font-size: small;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(50, 41, 41);
+}
+
+.shopy_image {
+  width: 55%;
+}
+
+.shopy_image > img {
+  width: 100%;
+}
+
+.contact_form {
+  width: 40%;
+  height: 100%;
+}
+
+.close-form-button {
+  border: none;
+  background-color: white;
+  float: right;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* * {
+  border: 1px solid black;
+} */
+#message,
+#email,
+#name {
+  border: none;
+  background-color: #dee3ea;
+  padding: 4px;
+}
+
+#contact_submit_btn {
+  display: flex;
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+}
+
+#message {
+  resize: none;
+}
