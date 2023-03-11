@@ -1,5 +1,20 @@
 # ecom
 
+<!-- instruction to setup backend -->
+
+delete the api inner items
+npx create-strapi-app@latest .
+npm i axios
+npm install redux @reduxjs/toolkit
+setup strapi
+paste the token id in .env file
+update order.js file of backend
+create stripe accoutn
+paste the bothe keys
+secret key in .env file
+public key in cart.js
+npm install --save @stripe/react-stripe-js @stripe/stripe-js
+
 payment
 
 -> change in list.jsx , product.js 10 march
