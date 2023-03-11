@@ -33,6 +33,16 @@ const Products = () => {
     );
   };
 
+  /////////////////////////////no use /////just for ignore warning
+  if (loading) {
+    <div>Loading...</div>;
+  }
+
+  if (error) {
+    <div>Error: {error.message}</div>;
+  }
+  //////////////////////////////////////////////////////////////////////
+
   return (
     <div className="products">
       <div className="left">

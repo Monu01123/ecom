@@ -24,7 +24,19 @@ function ContactUs() {
         (result) => {
           console.log(result.text);
           console.log("message sent");
-          toast("Wow so easy!");
+          toast.promise(
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                resolve();
+              }, 500);
+            }),
+            {
+              pending: "message sending",
+              success: "message sent",
+              error: "error received!",
+            }
+          );
+          setShowForm(false);
         },
         (error) => {
           console.log(error.text);
@@ -46,6 +58,18 @@ function ContactUs() {
           >
             Contact Us
           </button>
+          <ToastContainer
+            position="top-center"
+            autoClose={4000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable={false}
+            pauseOnHover
+            theme="dark"
+          />
         </div>
       </div>
 
@@ -82,7 +106,7 @@ function ContactUs() {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="user_email"
+                    placeholder="Your email"
                     required
                   />
                 </div>
@@ -97,7 +121,6 @@ function ContactUs() {
                   ></textarea>
                 </div>
                 <input type="submit" value="Send" id="contact_submit_btn" />
-                <ToastContainer />
               </form>
             </div>
           </div>

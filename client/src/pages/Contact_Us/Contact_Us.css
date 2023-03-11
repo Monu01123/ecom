@@ -54,11 +54,17 @@
   display: flex;
   justify-content: center;
   margin-left: 16px;
+  font-weight: bolder;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  padding: 3px 0px;
 }
 
 .contact-first-div {
@@ -128,6 +134,7 @@
   border: none;
   font-size: medium;
   cursor: pointer;
+  padding: 8px 10px;
 }
 
 #message {

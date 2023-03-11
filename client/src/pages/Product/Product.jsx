@@ -8,6 +8,8 @@ import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartReducer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product = () => {
   const id = useParams().id;
@@ -16,12 +18,20 @@ const Product = () => {
 
   const dispatch = useDispatch();
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+  /////////////////////////////no use /////just for ignore warning
+  if (loading) {
+    <div>Loading...</div>;
+  }
 
+  if (error) {
+    <div>Error: {error.message}</div>;
+  }
+  //////////////////////////////////////////////////////////////////////
   return (
     <div className="product">
       {loading ? (
         "loading"
-      ) : ( 
+      ) : (
         <>
           <div className="left">
             <div className="images">
@@ -69,7 +79,7 @@ const Product = () => {
             </div>
             <button
               className="add"
-              onClick={() =>
+              onClick={() => {
                 dispatch(
                   addToCart({
                     id: data.id,
@@ -79,11 +89,22 @@ const Product = () => {
                     img: data.attributes.img.data.attributes.url,
                     quantity,
                   })
-                )
-              }
+                );
+                toast.success("Added to cart", {
+                  position: "top-right",
+                  autoClose: 2000,
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: false,
+                  progress: undefined,
+                  theme: "dark",
+                });
+              }}
             >
               <AddShoppingCartIcon /> ADD TO CART
             </button>
+            <ToastContainer />
             <div className="links">
               <div className="item">
                 <FavoriteBorderIcon /> ADD TO WISH LIST

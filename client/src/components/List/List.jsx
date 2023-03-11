@@ -10,6 +10,15 @@ const List = ({ subCats, maxPrice, sort, catId }) => {
     )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
   );
 
+  /////////////////////////////no use /////just for ignore warning
+  if (loading) {
+    <div>Loading...</div>;
+  }
+
+  if (error) {
+    <div>Error: {error.message}</div>;
+  }
+  //////////////////////////////////////////////////////////////////////
   return (
     <div className="list">
       {loading

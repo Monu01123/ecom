@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "../Card/Card";
 import "./FeaturedProducts.scss";
 import useFetch from "../../hooks/useFetch";
-import axios from "axios";
+// import axios from "axios";
 
 const FeaturedProducts = ({ type }) => {
   const { data, loading, error } = useFetch(
@@ -11,7 +11,7 @@ const FeaturedProducts = ({ type }) => {
 
   return (
     <div className="featuredProducts">
-      <div className="top">  
+      <div className="top">
         <h1>{type} products</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
