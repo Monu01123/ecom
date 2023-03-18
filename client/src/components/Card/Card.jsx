@@ -1,6 +1,7 @@
 import React from "react";
 import "./Card.scss";
 import { Link } from "react-router-dom";
+import img from "./background.png";
 
 const Card = ({ item }) => {
   console.log(item);
@@ -11,18 +12,21 @@ const Card = ({ item }) => {
           {item?.attributes.isNew && <span>New Season</span>}
           <img
             src={
-              process.env.REACT_APP_UPLOAD_URL + item.attributes?.img?.data?.attributes?.url
+              process.env.REACT_APP_UPLOAD_URL +
+              item.attributes?.img?.data?.attributes?.url
             }
             alt=""
             className="mainImg"
           />
           <img
             src={
-              process.env.REACT_APP_UPLOAD_URL + item.attributes?.img2?.data?.attributes?.url
+              process.env.REACT_APP_UPLOAD_URL +
+              item.attributes?.img2?.data?.attributes?.url
             }
             alt=""
             className="secondImg"
           />
+          <img src={img} alt="" className="backImg" />
         </div>
         <h2>{item?.attributes.title}</h2>
         <div className="prices">
@@ -33,5 +37,5 @@ const Card = ({ item }) => {
     </Link>
   );
 };
-  
+
 export default Card;
