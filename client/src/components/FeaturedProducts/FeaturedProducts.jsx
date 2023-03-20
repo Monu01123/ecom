@@ -14,11 +14,12 @@ const FeaturedProducts = ({ type }) => {
       <div className="top">
         <h1>{type} products</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-          suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-          lacus vel facilisis labore et dolore magna aliqua. Quis ipsum
-          suspendisse ultrices gravida. Risus commodo viverra maecenas.
+          Featured items are products that are highlighted or promoted by a
+          business to showcase their best or most popular products. They are
+          typically displayed prominently on a website or in a store to attract
+          customers and drive sales. Featuring items can be an effective way to
+          showcase the quality and value of a business's products and to create
+          a sense of urgency for customers to make a purchase.
         </p>
       </div>
       <div className="bottom">

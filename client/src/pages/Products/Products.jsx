@@ -4,6 +4,7 @@ import { useParams, useLocation } from "react-router-dom";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
 import "./Products.scss";
+import mainImg from "./main.png";
 
 const Products = () => {
   const catId = parseInt(useParams().id);
@@ -100,11 +101,7 @@ const Products = () => {
         </div>
       </div>
       <div className="right">
-        <img
-          className="catImg"
-          src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          alt=""
-        />
+        <img className="catImg" src={mainImg} alt="" />
         <List
           catId={catId}
           maxPrice={maxPrice}

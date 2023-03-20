@@ -9,6 +9,7 @@ import ContactUs from "./pages/Contact_Us/Contact_Us";
 import AboutUs from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Registration from "./pages/Login/Regester";
+import Logout from "./pages/Login/Logout";
 import "./app.scss";
 
 const Layout = () => {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/logout",
+        element: <Logout />,
       },
       {
         path: "/registration",
