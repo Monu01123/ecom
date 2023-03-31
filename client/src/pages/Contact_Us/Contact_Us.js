@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./Contact_Us.css"; // import your css file
 import emailjs from "@emailjs/browser";
-import shopy from "./shopy.jpg";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { pink } from "@mui/material/colors";
 import { ToastContainer, toast } from "react-toastify";
@@ -59,8 +58,8 @@ function ContactUs() {
             Contact Us
           </button>
           <ToastContainer
-            position="top-center"
-            autoClose={4000}
+            position="bottom-left"
+            autoClose={2000}
             hideProgressBar
             newestOnTop={false}
             closeOnClick
@@ -74,55 +73,41 @@ function ContactUs() {
       </div>
 
       {showForm && (
-        <div className="form-overlay">
-          <div className="form-popup">
-            <div className="shopy_image">
-              <img src={shopy} alt="" />
-            </div>
-            <div className="contact_form">
-              <button
-                className="close-form-button"
-                onClick={() => setShowForm(false)}
-              >
-                <CancelIcon sx={{ color: pink[500] }} />
-              </button>
-              <br />
-              <br />
-              <h2>Contact Us</h2>
-              <form ref={form} onSubmit={sendEmail}>
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="user_name"
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Your email"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    placeholder="Your message"
-                    required
-                  ></textarea>
-                </div>
-                <input type="submit" value="Send" id="contact_submit_btn" />
-              </form>
-            </div>
+        <div className="form_overlay">
+          <div className="form_popup">
+            <button className="pop_up_close" onClick={() => setShowForm(false)}>
+              <CancelIcon sx={{ color: pink[500] }} />
+            </button>
+            <br />
+            <br />
+
+            <form ref={form} onSubmit={sendEmail} className="form_pop_up">
+              <h2 className="pop_up_heading">Contact Us</h2>
+              <input
+                type="text"
+                id="name"
+                name="user_name"
+                placeholder="Name"
+                required
+              />
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail"
+                required
+              />
+
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                placeholder="Message"
+                required
+              ></textarea>
+              <input type="submit" value="Send" id="pop_up_submit" />
+            </form>
           </div>
         </div>
       )}

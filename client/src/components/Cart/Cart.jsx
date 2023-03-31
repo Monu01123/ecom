@@ -18,10 +18,12 @@ const Cart = () => {
     });
     return total.toFixed(2);
   };
+
   //  hp  "pk_test_51Miy2UFxk8eNdsEgdE3ooOwUPP3Hw3QZdq7T51HpsfwJz8 TtviJbXEHQBDIVWlPNCGMl6WUjYQbEp5eTdtMI2GXI00nLPPAuch"
   const stripePromise = loadStripe(
     "pk_test_51Miy2UFxk8eNdsEgdE3ooOwUPP3Hw3QZdq7T51HpsfwJz8 TtviJbXEHQBDIVWlPNCGMl6WUjYQbEp5eTdtMI2GXI00nLPPAuch"
   );
+
   const handlePayment = async () => {
     try {
       const stripe = await stripePromise;

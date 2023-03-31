@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { storeUser } from "./helpers";
 import "./Login.css";
 import { NavLink } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const initialUser = { password: "", identifier: "" };
 
@@ -20,26 +21,42 @@ const Login = () => {
     }));
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (event) => {
+    event.preventDefault();
     const url = `http://localhost:1337/api/auth/local`;
     try {
       if (user.identifier && user.password) {
         const { data } = await axios.post(url, user);
         if (data.jwt) {
           storeUser(data);
-          // toast.success("Logged in successfully!", {
-          //   hideProgressBar: true,
-          // });
-          window.alert("success");
+          toast.success("Login success", {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "dark",
+          });
+
           setUser(initialUser);
-          navigate("/");
+          setTimeout(function () {
+            navigate("/");
+          }, 1000);
         }
       }
     } catch (error) {
-      // toast.error(error.message, {
-      //   hideProgressBar: true,
-      // });
-      window.alert("alert");
+      toast.error("Login error", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
@@ -55,6 +72,7 @@ const Login = () => {
             onChange={handleChange}
             placeholder="E-MAIL"
             className="inp"
+            autocomplete="off"
           />
           <input
             type="password"
@@ -63,6 +81,7 @@ const Login = () => {
             onChange={handleChange}
             placeholder="PASSWORD"
             className="inp"
+            autocomplete="off"
           />
           <button type="button" onClick={handleLogin} className="login_button">
             LOG IN
@@ -75,6 +94,7 @@ const Login = () => {
         <NavLink to="/registration">
           <button className="reg_link">REGISTER</button>
         </NavLink>
+        <ToastContainer />
       </div>
     </div>
   );

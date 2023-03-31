@@ -15,8 +15,9 @@ function Item() {
         <LogoutOutlinedIcon style={{ color: "white" }} />;
       </>
     );
+  } else {
+    return <LoginIcon style={{ color: "white" }} />;
   }
-  return <LoginIcon style={{ color: "white" }} />;
 }
 
 const Profile = () => {
@@ -29,8 +30,10 @@ const Profile = () => {
     <div className="profile_card">
       <img className="profileimage" src={profile} alt="Profile" />
       <div className="profile_details">
-        <h2 className="user_name">{username}</h2>
-        <address className="address">Newai tonk rajasthan</address>
+        <h2 className="user_name">{sessionStorage.getItem("username")}</h2>
+        <address className="address">
+          {sessionStorage.getItem("address")}
+        </address>
       </div>
       <div isOpen={isOpen} navbar>
         <NavLink href="/logout">

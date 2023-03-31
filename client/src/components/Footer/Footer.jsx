@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.scss";
 import MyImage from "./payment_option.jpg";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,11 +9,29 @@ const Footer = () => {
       <div className="top">
         <div className="item">
           <h1>Categories</h1>
-          <span>Women</span>
-          <span>Men</span>
-          <span>Shoes</span>
-          <span>Accessories</span>
-          <span>New Arrivals</span>
+          <NavLink to="/products/1" className="footer_items">
+            <span>Women</span>
+          </NavLink>
+          <span>
+            <NavLink to="/products/2" className="footer_items">
+              Men
+            </NavLink>
+          </span>
+          <span>
+            <NavLink to="/products/1" className="footer_items">
+              Shoes
+            </NavLink>
+          </span>
+          <span>
+            <NavLink to="/products/2" className="footer_items">
+              New Arrivals
+            </NavLink>
+          </span>
+          <span>
+            <NavLink to="/products/1" className="footer_items">
+              Accesories
+            </NavLink>
+          </span>
         </div>
         <div className="item">
           <h1>Links</h1>

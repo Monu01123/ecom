@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartReducer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { userData } from "../Login/helpers";
 
 const Product = () => {
   const id = useParams().id;
@@ -18,15 +19,50 @@ const Product = () => {
 
   const dispatch = useDispatch();
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
-  /////////////////////////////no use /////just for ignore warning
+  ///////////////////////////// no use /////just for ignore warning
   if (loading) {
     <div>Loading...</div>;
   }
-
   if (error) {
     <div>Error: {error.message}</div>;
   }
   //////////////////////////////////////////////////////////////////////
+  function addtocart() {
+    const { username } = userData();
+    if (username) {
+      dispatch(
+        addToCart({
+          id: data.id,
+          title: data.attributes.title,
+          desc: data.attributes.desc,
+          price: data.attributes.price,
+          img: data.attributes.img.data.attributes.url,
+          quantity,
+        })
+      );
+      toast.success("Added to cart", {
+        position: "bottom-left",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      toast.error("Login first", {
+        position: "bottom-left",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  }
   return (
     <div className="product">
       {loading ? (
@@ -77,31 +113,7 @@ const Product = () => {
               {quantity}
               <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
             </div>
-            <button
-              className="add"
-              onClick={() => {
-                dispatch(
-                  addToCart({
-                    id: data.id,
-                    title: data.attributes.title,
-                    desc: data.attributes.desc,
-                    price: data.attributes.price,
-                    img: data.attributes.img.data.attributes.url,
-                    quantity,
-                  })
-                );
-                toast.success("Added to cart", {
-                  position: "top-right",
-                  autoClose: 2000,
-                  hideProgressBar: true,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: false,
-                  progress: undefined,
-                  theme: "dark",
-                });
-              }}
-            >
+            <button className="add" onClick={addtocart}>
               <AddShoppingCartIcon /> ADD TO CART
             </button>
             <ToastContainer />
