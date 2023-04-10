@@ -29,6 +29,8 @@ const Registration = () => {
           setUser(initialUser);
           sessionStorage.setItem("username", user.username);
           sessionStorage.setItem("address", address);
+          sessionStorage.setItem("mobile_number", num);
+          sessionStorage.setItem("email", user.email);
           toast.success("You are registered", {
             position: "top-right",
             autoClose: 1000,
@@ -77,9 +79,10 @@ const Registration = () => {
             name="username"
             value={user.username}
             onChange={handleUserChange}
-            placeholder="NAME"
+            placeholder="FULL NAME"
             className="inp"
             autocomplete="off"
+            required
           />
           <input
             type="email"
@@ -89,6 +92,7 @@ const Registration = () => {
             placeholder="E-MAIL"
             className="inp"
             autocomplete="off"
+            required
           />
           <input
             type="password"
@@ -98,6 +102,7 @@ const Registration = () => {
             placeholder="PASSWORD"
             className="inp"
             autocomplete="off"
+            required
           />
           <input
             type="text"
@@ -107,6 +112,7 @@ const Registration = () => {
             placeholder="ADDRESS"
             className="inp"
             autocomplete="off"
+            required
           />
           <input
             type="number"
@@ -116,6 +122,7 @@ const Registration = () => {
             placeholder="+91 TELEPHONE"
             className="inp"
             autocomplete="off"
+            required
           />
           <button color="primary" className="login_button">
             Sign up

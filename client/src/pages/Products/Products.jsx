@@ -17,7 +17,6 @@ const Products = () => {
     `/sub-categories?[filters][categories][id][$eq]=${catId}`
   );
 
-  //this id for the call the setsort function when the fuction calls
   useEffect(() => {
     setSort("asc");
     console.log("Path changed to", location.pathname);
@@ -34,15 +33,12 @@ const Products = () => {
     );
   };
 
-  /////////////////////////////no use /////just for ignore warning
   if (loading) {
     <div>Loading...</div>;
   }
-
   if (error) {
     <div>Error: {error.message}</div>;
   }
-  //////////////////////////////////////////////////////////////////////
 
   return (
     <div className="products">
@@ -83,7 +79,6 @@ const Products = () => {
               value="asc"
               name="price"
               onChange={(e) => setSort("asc")}
-              // checked
             />
             <label htmlFor="asc">Price (Lowest first)</label>
           </div>
@@ -94,7 +89,6 @@ const Products = () => {
               value="desc"
               name="price"
               onChange={(e) => setSort("desc")}
-              // checked
             />
             <label htmlFor="desc">Price (Highest first)</label>
           </div>

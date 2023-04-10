@@ -6,12 +6,15 @@ import "./Login.css";
 import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { resetCart } from "../../redux/cartReducer";
+import { useDispatch } from "react-redux";
 const initialUser = { password: "", identifier: "" };
 
 const Login = () => {
+  // const [email, setEmail] = useState("");
   const [user, setUser] = useState(initialUser);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -23,6 +26,7 @@ const Login = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    let email = user.identifier;
     const url = `http://localhost:1337/api/auth/local`;
     try {
       if (user.identifier && user.password) {
@@ -39,12 +43,28 @@ const Login = () => {
             progress: undefined,
             theme: "dark",
           });
-
           setUser(initialUser);
           setTimeout(function () {
             navigate("/");
           }, 1000);
         }
+      }
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if (data.status === 401 || !data) {
+        console.log("error");
+      } else {
+        console.log("Email sent");
       }
     } catch (error) {
       toast.error("Login error", {
@@ -58,6 +78,7 @@ const Login = () => {
         theme: "dark",
       });
     }
+    dispatch(resetCart());
   };
 
   return (
@@ -73,6 +94,7 @@ const Login = () => {
             placeholder="E-MAIL"
             className="inp"
             autocomplete="off"
+            required
           />
           <input
             type="password"
@@ -82,6 +104,7 @@ const Login = () => {
             placeholder="PASSWORD"
             className="inp"
             autocomplete="off"
+            required
           />
           <button type="button" onClick={handleLogin} className="login_button">
             LOG IN

@@ -14,10 +14,10 @@ function ContactUs() {
 
     emailjs
       .sendForm(
-        "service_6bootbp",
-        "template_jgfkcuf",
+        "service_zie9fbf",
+        "template_32exq8l",
         form.current,
-        "TDScN8GqxXd0UPQNJ"
+        "Yy_BxydS-hmZUn5rk"
       )
       .then(
         (result) => {
@@ -80,7 +80,6 @@ function ContactUs() {
             </button>
             <br />
             <br />
-
             <form ref={form} onSubmit={sendEmail} className="form_pop_up">
               <h2 className="pop_up_heading">Contact Us</h2>
               <input
@@ -90,7 +89,6 @@ function ContactUs() {
                 placeholder="Name"
                 required
               />
-
               <input
                 type="email"
                 id="email"
@@ -98,7 +96,6 @@ function ContactUs() {
                 placeholder="E-mail"
                 required
               />
-
               <textarea
                 id="message"
                 name="message"

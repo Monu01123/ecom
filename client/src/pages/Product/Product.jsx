@@ -19,14 +19,12 @@ const Product = () => {
 
   const dispatch = useDispatch();
   const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
-  ///////////////////////////// no use /////just for ignore warning
   if (loading) {
     <div>Loading...</div>;
   }
   if (error) {
     <div>Error: {error.message}</div>;
   }
-  //////////////////////////////////////////////////////////////////////
   function addtocart() {
     const { username } = userData();
     if (username) {

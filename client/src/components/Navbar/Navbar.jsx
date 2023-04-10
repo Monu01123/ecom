@@ -11,8 +11,6 @@ import { useSelector } from "react-redux";
 import MyImage from "./icon.png";
 import Profile from "../Profile/Profile";
 import Tooltip from "@mui/material/Tooltip";
-// import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-// import { NavLink } from "reactstrap";
 
 const Navbar = () => {
   //for check cart is open or not
